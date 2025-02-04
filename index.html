@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muslim | Portfolio</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2A9D8F;
+            --secondary: #264653;
+            --accent: #E9C46A;
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .glow-effect {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            filter: blur(100px);
+            opacity: 0.1;
+            z-index: -1;
+            animation: glowMove 20s infinite alternate;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(15px);
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            animation: textFloat 3s ease-in-out infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-section {
+            padding: 8rem 10%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            box-shadow: 0 0 50px rgba(42, 157, 143, 0.3);
+            transition: 0.4s;
+            border: 3px solid var(--accent);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 70px rgba(42, 157, 143, 0.5);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            background: var(--glass);
+            padding: 3rem;
+            border-radius: 30px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .personal-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .detail-item::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            background: var(--accent);
+            left: 0;
+            top: 0;
+            transition: 0.3s;
+            opacity: 0;
+        }
+
+        .detail-item:hover::before {
+            opacity: 1;
+        }
+
+        .detail-item i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+                :root {
+            --primary: #2A9D8F;
+            --secondary: #264653;
+            --accent: #E9C46A;
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+
+        .profile-card {
+            max-width: 400px;
+            margin: 2rem auto;
+            background: var(--glass);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .profile-top {
+            position: relative;
+            height: 120px;
+        }
+
+        .profile-banner {
+            height: 100%;
+            overflow: hidden;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .profile-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-avatar {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary);
+            overflow: hidden;
+            background: var(--secondary);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-content {
+            padding: 70px 20px 20px;
+            text-align: center;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        /* النصوص العريضة */
+        .profile-name {
+            font-size: 1.5rem;
+            color: var(--text);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-tag {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .profile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .bio-btn, .msg-btn {
+            padding: 0.8rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .bio-btn {
+            background: rgba(255,255,255,0.05);
+            color: var(--text);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .msg-btn {
+            background: #5865f2;
+            color: white !important;
+        }
+
+        .bio-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .msg-btn:hover {
+            background: #4752c4;
+        }
+
+        @media (max-width: 480px) {
+            .profile-card {
+                width: 90%;
+            }
+            
+            .profile-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+        .projects-grid {
+            padding: 5rem 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--glass);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(42, 157, 143, 0.3);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transform: scaleX(0);
+            transition: 0.3s;
+        }
+
+        .project-card:hover::after {
+            transform: scaleX(1);
+        }
+
+.discord-contact {
+    padding: 4rem 10%;
+    text-align: center;
+}
+
+.discord-card {
+    background: var(--glass);
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.discord-header {
+    margin-bottom: 2rem;
+}
+
+.discord-header i {
+    font-size: 3rem;
+    color: #5865f2;
+    margin-bottom: 1rem;
+}
+
+.discord-header h3 {
+    font-size: 1.5rem;
+}
+
+.discord-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+.discord-user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-details {
+    text-align: right;
+}
+
+.username {
+    display: block;
+    font-weight: bold;
+}
+
+.status {
+    font-size: 0.9rem;
+}
+
+.status.online {
+    color: #3ba55c;
+}
+
+.discord-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #5865f2;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.2s opacity;
+}
+
+.discord-btn:hover {
+    opacity: 0.9;
+}
+        
+        .skills-card {
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.skill-item:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-5px);
+}
+
+.skill-item i {
+    font-size: 2.5rem;
+}
+
+.skill-item span {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+}
+
+@media (max-width: 480px) {
+    .nav-brand span {
+        display: none;
+    }
+}
+
+
+        @keyframes textFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glowMove {
+            0% { transform: translate(-50%, -50%); }
+            100% { transform: translate(50%, 50%); }
+        }
+
+        @keyframes discordGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+                padding: 4rem 5%;
+            }
+
+            .profile-image {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .navbar {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .discord-contact {
+                padding: 4rem 5%;
+            }
+            
+            .discord-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-effect"></div>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#profile">المعلومات</a></li>
+            <li><a href="#projects">المشاريع</a></li>
+            <li><a href="#contact">التواصل</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div>
+            <h1>مسلم البلوشي<br><span style="color: var(--accent);">مطور برمجيات مبدع</span></h1>
+            <p>تحويل الأفكار إلى واقع رقمي بتقنيات حديثة</p>
+        </div>
+    </section>
+
+    <section class="profile-section" id="profile">
+        <div class="profile-image">
+<img src="file.jpg" alt="الصورة الشخصية">
+        </div>
+        
+        <div class="profile-info">
+            <h2 style="font-size: 2.8rem; margin-bottom: 3rem; color: var(--accent);">معلومات عني</h2>
+            <div class="personal-details">
+                <div class="detail-item">
+                    <i class='bx bx-user'></i>
+                    <div>
+                        <h4>الاسم الكامل</h4>
+                        <p>مسلم حمد البلوشي</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class='bx bx-code-alt'></i>
+                    <div>
+                        <h4>التخصص</h4>
+                        <p>تطوير البوتات الذكية</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class='bx bx-envelope'></i>
+                    <div>
+                        <h4>البريد الإلكتروني</h4>
+                        <p>muslim@example.com</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class='bx bx-globe'></i>
+                    <div>
+                        <h4>الموقع</h4>
+                        <p>سلطنة عمان</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-grid" id="projects">
+        <div class="project-card">
+            <h3>بوتات الديسكورد الذكية</h3>
+            <p>تطوير بوتات متكاملة تشمل أنظمة الموسيقى، الإدارة، الألعاب، البحث، وتوب فويس بميزات متقدمة</p>
+        </div>
+        
+        <div class="project-card skills-card">
+            <h3>مهاراتي البرمجية</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class='bx bxl-html5' style="color: #E44D26;"></i>
+                    <span>HTML</span>
+                </div>
+                <div class="skill-item">
+                    <i class='bx bxl-css3' style="color: #264DE4;"></i>
+                    <span>CSS</span>
+                </div>
+                <div class="skill-item">
+                    <i class='bx bxl-javascript' style="color: #F7DF1E;"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-item">
+                    <i class='bx bxl-c-plus-plus' style="color: #00599C;"></i>
+                    <span>++C</span>
+                </div>
+                <div class="skill-item">
+                    <i class='bx bxl-nodejs' style="color: #68A063;"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="skill-item">
+    <i class='bx bxl-python' style="color: #306998;"></i>
+    <span>Python</span>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="profile-section" id="contact">
+        <div class="profile-card">
+            <div class="profile-top">
+                <div class="profile-banner">
+                    <img src="banner.png" alt="profile banner">
+                </div>
+                <div class="profile-avatar">
+                    <img src="avatar.png" alt="avatar">
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-info">
+                    <h3 class="profile-name">مسلم البلوشي</h3>
+                    <span class="profile-tag">@muslim.dev</span>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <i class='bx bx-user'></i>
+                        <span>٢ أصدقاء مشتركين</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class='bx bx-server'></i>
+                        <span>٣ سيرفرات مشتركة</span>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <a href="#" class="bio-btn">
+                        عرض الملف الشخصي
+                        <i class='bx bx-chevron-left'></i>
+                    </a>
+                    <a href="https://discord.com/users/990191620420947988" 
+                       class="msg-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class='bx bx-send'></i>
+                        إرسال رسالة
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const glow = document.querySelector('.glow-effect');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.profile-section, .project-card, .discord-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
